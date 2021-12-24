@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 
 class Loading extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class _LoadingState extends State<Loading> {
   void initState() {
     super.initState();
     getLocation();
+    fetchData();
   }
 
   void getLocation() async {
@@ -21,6 +23,14 @@ class _LoadingState extends State<Loading> {
     } catch (e) {
       print('There was a problem with the internet connection.');
     }
+  }
+
+  void fetchData() async {
+    http.Response response =
+        await http.get('https://samples.openweathermap.org/data/2.5/weather?'
+            'q=London&appid=b1b15e88fa797225412429c1c50c122a1');
+    print(response.body);
+    print(response.statusCode);
   }
 
   @override
