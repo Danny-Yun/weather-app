@@ -10,13 +10,17 @@ class _LoadingState extends State<Loading> {
   @override
   void initState() {
     super.initState();
-    // getLocation();
+    getLocation();
   }
 
   void getLocation() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    print(position);
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      print(position);
+    } catch (e) {
+      print('There was a problem with the internet connection.');
+    }
   }
 
   @override
@@ -24,9 +28,7 @@ class _LoadingState extends State<Loading> {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
-          onPressed: () {
-            getLocation();
-          },
+          onPressed: () {},
           child: Text(
             'Get my location',
             style: TextStyle(color: Colors.white),
