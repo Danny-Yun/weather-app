@@ -11,8 +11,8 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  late double latitude3;
-  late double longitude3;
+  double? latitude3;
+  double? longitude3;
 
   @override
   void initState() {
@@ -24,15 +24,15 @@ class _LoadingState extends State<Loading> {
   void getLocation() async {
     MyLocation myLocation = MyLocation();
     await myLocation.getMyCurrentLocation();
-    latitude3 = myLocation.latitude2();
-    longitude3 = myLocation.longitude2();
+    latitude3 = myLocation!.latitude2;
+    longitude3 = myLocation!.longitude2;
     print(latitude3);
     print(longitude3);
 
     Network network = Network(
         'https://api.openweathermap.org/data/2.5/weather?lat=$latitude3&lon=$longitude3&appid=$apiKey&units=metric');
 
-    var weatherData = await Network.getJsonData();
+    var weatherData = await network.getJsonData();
     print(weatherData);
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return WeatherScreen(parseWeatherData: weatherData);
@@ -61,7 +61,9 @@ class _LoadingState extends State<Loading> {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            getLocation();
+          },
           child: Text(
             'Get my location',
             style: TextStyle(color: Colors.white),

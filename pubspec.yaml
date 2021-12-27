@@ -35,6 +35,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   geolocator: ^8.0.1
   http: ^0.13.4
+  google_fonts: ^2.1.1
+  flutter_svg: ^1.0.0
+  timer_builder: ^2.0.0
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -59,9 +63,22 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - image/background.jpg
+    - image/bad.png
+    - image/fair.png
+    - image/good.png
+    - image/poor.png
+    - image/moderate.png
+
+    - svg/climacon-cloud_lightning.svg
+    - svg/climacon-cloud_moon.svg
+    - svg/climacon-cloud_rain.svg
+    - svg/climacon-cloud_snow_alt.svg
+    - svg/climacon-cloud_sun.svg
+    - svg/climacon-sun_fill.svg
+    - svg/climacon-sun.svg
+    - svg/icon.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
